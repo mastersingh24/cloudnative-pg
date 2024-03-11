@@ -26,8 +26,8 @@ fi
 # Defaults
 KIND_NODE_DEFAULT_VERSION=v1.29.2
 K3D_NODE_DEFAULT_VERSION=v1.29.1
-CSI_DRIVER_HOST_PATH_DEFAULT_VERSION=v1.11.0
-EXTERNAL_SNAPSHOTTER_VERSION=v6.3.1
+CSI_DRIVER_HOST_PATH_DEFAULT_VERSION=v1.13.0
+EXTERNAL_SNAPSHOTTER_VERSION=v7.0.1
 EXTERNAL_PROVISIONER_VERSION=v3.6.1
 EXTERNAL_RESIZER_VERSION=v1.9.1
 EXTERNAL_ATTACHER_VERSION=v4.4.1
@@ -380,11 +380,11 @@ deploy_csi_host_path() {
   kubectl apply -f "${CSI_BASE_URL}"/external-resizer/"${EXTERNAL_RESIZER_VERSION}"/deploy/kubernetes/rbac.yaml
 
   ## Install driver and plugin
-  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-latest/hostpath/csi-hostpath-driverinfo.yaml
-  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-latest/hostpath/csi-hostpath-plugin.yaml
+  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-1.27/hostpath/csi-hostpath-driverinfo.yaml
+  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-1.27/hostpath/csi-hostpath-plugin.yaml
 
   ## create volumesnapshotclass
-  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-latest/hostpath/csi-hostpath-snapshotclass.yaml
+  kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/deploy/kubernetes-1.27/hostpath/csi-hostpath-snapshotclass.yaml
 
   ## create storage class
   kubectl apply -f "${CSI_BASE_URL}"/csi-driver-host-path/"${CSI_DRIVER_HOST_PATH_VERSION}"/examples/csi-storageclass.yaml
